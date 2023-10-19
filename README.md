@@ -1,29 +1,14 @@
-# gRPC Hello World
+# mygRPC
 
-Follow these setup to run the [quick start][] example:
+Meta trace的raas top3数据中，root对于下游MS的调用有四种情况：
 
- 1. Get the code:
+![image](https://github.com/dufanrong/mygrpc/blob/master/img/whiteboard_exported_image.png)
 
-    ```console
-    $ go get google.golang.org/grpc/examples/helloworld/greeter_client
-    $ go get google.golang.org/grpc/examples/helloworld/greeter_server
-    ```
+greeter_client/main.go接受http请求（http://http://localhost:8082/?case=x），解析case字段并选择相应的server发送请求。
 
- 2. Run the server:
+性能测试：
 
     ```console
-    $ $(go env GOPATH)/bin/greeter_server &
+    $ wrk -t4 -c10 -d30s -s scripts/test.lua http://localhost:8082
     ```
 
- 3. Run the client:
-
-    ```console
-    $ $(go env GOPATH)/bin/greeter_client
-    Greeting: Hello world
-    ```
-
-For more details (including instructions for making a small change to the
-example code) or if you're having trouble running this example, see [Quick
-Start][].
-
-[quick start]: https://grpc.io/docs/languages/go/quickstart

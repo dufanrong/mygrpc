@@ -8,7 +8,6 @@ greeter_client/main.go接受http请求（http://http://localhost:8082/?case=x）
 
 性能测试：
 
-    ```console
-    $ wrk -t4 -c10 -d30s -s scripts/test.lua http://localhost:8082
-    ```
+wrk -t4 -c10 -d30s -s scripts/test.lua http://localhost:8082
+
 
